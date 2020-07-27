@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://training.imcs.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://training.imcs.com" xmlns:intf="http://training.imcs.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://training.imcs.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="addCustomer">
+    <complexType>
+     <sequence>
+      <element name="c" type="impl:Customer"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Customer">
+    <sequence>
+     <element name="address" nillable="true" type="xsd:string"/>
+     <element name="id" type="xsd:int"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="addCustomerResponse">
+    <complexType>
+     <sequence>
+      <element name="addCustomerReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteCustomer">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteCustomerResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteCustomerReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCustomer">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCustomerResponse">
+    <complexType>
+     <sequence>
+      <element name="getCustomerReturn" type="impl:Customer"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAllCustomer">
+    <complexType/>
+   </element>
+   <element name="getAllCustomerResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getAllCustomerReturn" type="impl:Customer"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="deleteCustomerResponse">
+
+      <wsdl:part element="impl:deleteCustomerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllCustomerResponse">
+
+      <wsdl:part element="impl:getAllCustomerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addCustomerRequest">
+
+      <wsdl:part element="impl:addCustomer" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteCustomerRequest">
+
+      <wsdl:part element="impl:deleteCustomer" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addCustomerResponse">
+
+      <wsdl:part element="impl:addCustomerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCustomerRequest">
+
+      <wsdl:part element="impl:getCustomer" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCustomerResponse">
+
+      <wsdl:part element="impl:getCustomerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllCustomerRequest">
+
+      <wsdl:part element="impl:getAllCustomer" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CustomerServiceImpl">
+
+      <wsdl:operation name="addCustomer">
+
+         <wsdl:input message="impl:addCustomerRequest" name="addCustomerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addCustomerResponse" name="addCustomerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteCustomer">
+
+         <wsdl:input message="impl:deleteCustomerRequest" name="deleteCustomerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteCustomerResponse" name="deleteCustomerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCustomer">
+
+         <wsdl:input message="impl:getCustomerRequest" name="getCustomerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getCustomerResponse" name="getCustomerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllCustomer">
+
+         <wsdl:input message="impl:getAllCustomerRequest" name="getAllCustomerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllCustomerResponse" name="getAllCustomerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CustomerServiceImplSoapBinding" type="impl:CustomerServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="addCustomer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addCustomerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addCustomerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteCustomer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteCustomerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteCustomerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCustomer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCustomerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCustomerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllCustomer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllCustomerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllCustomerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CustomerServiceImplService">
+
+      <wsdl:port binding="impl:CustomerServiceImplSoapBinding" name="CustomerServiceImpl">
+
+         <wsdlsoap:address location="http://tempuri.org/CustomerValidation/services/CustomerServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

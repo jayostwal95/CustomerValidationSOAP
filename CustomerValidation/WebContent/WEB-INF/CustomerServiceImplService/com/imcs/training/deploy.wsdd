@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from CustomerServiceImplService WSDL service -->
+
+  <service name="CustomerServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://training.imcs.com"/>
+      <parameter name="wsdlServiceElement" value="CustomerServiceImplService"/>
+      <parameter name="schemaQualified" value="http://training.imcs.com"/>
+      <parameter name="wsdlServicePort" value="CustomerServiceImpl"/>
+      <parameter name="className" value="com.imcs.training.CustomerServiceImpl"/>
+      <parameter name="wsdlPortType" value="CustomerServiceImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://training.imcs.com" xmlns:retNS="http://training.imcs.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addCustomer" qname="operNS:addCustomer" returnQName="retNS:addCustomerReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://training.imcs.com" xmlns:tns="http://training.imcs.com" qname="pns:c" type="tns:Customer"/>
+      </operation>
+      <operation xmlns:operNS="http://training.imcs.com" xmlns:retNS="http://training.imcs.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="deleteCustomer" qname="operNS:deleteCustomer" returnQName="retNS:deleteCustomerReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://training.imcs.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://training.imcs.com" xmlns:retNS="http://training.imcs.com" xmlns:rtns="http://training.imcs.com" name="getCustomer" qname="operNS:getCustomer" returnQName="retNS:getCustomerReturn" returnType="rtns:Customer" soapAction="">
+        <parameter xmlns:pns="http://training.imcs.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://training.imcs.com" xmlns:retNS="http://training.imcs.com" xmlns:rtns="http://training.imcs.com" name="getAllCustomer" qname="operNS:getAllCustomer" returnQName="retNS:getAllCustomerReturn" returnType="rtns:Customer" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="addCustomer deleteCustomer getAllCustomer getCustomer"/>
+
+      <typeMapping xmlns:ns="http://training.imcs.com" qname="ns:Customer" type="java:com.imcs.training.Customer" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>
